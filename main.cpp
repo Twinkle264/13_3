@@ -13,9 +13,10 @@ int main() {
         } else if (db.size() < 20) {
             db.push_back(n);
         } else if (db.size() >= 20) {
-            db.erase(db.begin());
-            db.push_back(n);
-            db.shrink_to_fit();
+            for (int i = 0; i < db.size()-1; ++i) {
+                swap(db[i], db[i+1]);
+            }
+            db[19] = n;
         }
 
     } while (n != -1);
